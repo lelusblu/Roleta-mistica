@@ -157,5 +157,3 @@ const TarotWheel = ({ onCardSelected, isSpinning, setIsSpinning }) => {
 };
 
 export default TarotWheel;
-
-export default TarotWheel;
