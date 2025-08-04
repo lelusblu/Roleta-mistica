@@ -4,7 +4,12 @@ import logging
 from bson import ObjectId
 from datetime import datetime
 
-from ..models.lead import Lead, LeadCreate, LeadResponse
+try:
+    from ..models.lead import Lead, LeadCreate, LeadResponse
+except ImportError:
+    import sys
+    sys.path.append('/app/backend')
+    from models.lead import Lead, LeadCreate, LeadResponse
 
 logger = logging.getLogger(__name__)
 
