@@ -171,16 +171,16 @@ function App() {
         </div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
+      <div className="relative z-10 container mx-auto px-4 py-4 md:py-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-transparent mb-4">
+        <div className="text-center mb-6 md:mb-8">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-transparent mb-2 md:mb-4">
             Roleta Mística
           </h1>
-          <p className="text-amber-200 text-xl mb-2">
+          <p className="text-amber-200 text-lg md:text-xl mb-1 md:mb-2">
             Descubra os segredos do tarot
           </p>
-          <p className="text-amber-300/70">
+          <p className="text-amber-300/70 text-sm md:text-base">
             Uma experiência única de revelação espiritual
           </p>
         </div>
@@ -194,14 +194,14 @@ function App() {
         )}
 
         {currentStep === 2 && (
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {/* Coluna da Roleta */}
-            <div className="flex flex-col space-y-8">
+            <div className="flex flex-col space-y-4 md:space-y-8">
               <div className="text-center mb-4">
-                <h2 className="text-2xl font-bold text-amber-400 mb-2">
+                <h2 className="text-xl md:text-2xl font-bold text-amber-400 mb-2">
                   {userData?.name}, concentre-se em sua pergunta
                 </h2>
-                <p className="text-amber-200 italic mb-4">
+                <p className="text-amber-200 italic mb-4 text-sm md:text-base px-4">
                   "{userData?.question}"
                 </p>
               </div>
@@ -216,27 +216,27 @@ function App() {
             </div>
 
             {/* Coluna da Interpretação */}
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {selectedCard ? (
                 <CardInterpretation 
                   card={selectedCard} 
                   question={userData?.question}
                 />
               ) : (
-                <div className="text-center py-16">
-                  <div className="text-6xl mb-4 animate-pulse">🔮</div>
-                  <h3 className="text-2xl font-bold text-amber-400 mb-2">
+                <div className="text-center py-8 md:py-16 px-4">
+                  <div className="text-4xl md:text-6xl mb-4 animate-pulse">🔮</div>
+                  <h3 className="text-xl md:text-2xl font-bold text-amber-400 mb-2">
                     O Universo Está Escolhendo...
                   </h3>
-                  <p className="text-amber-200">
+                  <p className="text-amber-200 text-sm md:text-base mb-4">
                     {userData?.name}, sua carta está sendo selecionada pelas energias cósmicas
                   </p>
                   {!isSpinning && (
-                    <div className="mt-4 p-4 bg-amber-900/30 rounded-lg border border-amber-400/30">
-                      <p className="text-amber-300 font-bold text-lg">
-                        👈 CLIQUE EM "GIRAR ROLETA MÍSTICA"
+                    <div className="mt-4 p-4 bg-amber-900/30 rounded-lg border border-amber-400/30 max-w-sm mx-auto">
+                      <p className="text-amber-300 font-bold text-base md:text-lg">
+                        👈 CLIQUE EM "GIRAR AGORA!"
                       </p>
-                      <p className="text-amber-200 text-sm mt-2">
+                      <p className="text-amber-200 text-xs md:text-sm mt-2">
                         Para ver o resultado da sua consulta
                       </p>
                     </div>
