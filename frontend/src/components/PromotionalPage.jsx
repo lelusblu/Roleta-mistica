@@ -9,8 +9,13 @@ const PromotionalPage = ({ userData }) => {
   const [availableSpots] = useState(Math.floor(Math.random() * 8) + 3); // 3-10 vagas restantes
 
   const handleCTAClick = () => {
-    // Abrir em nova aba
-    window.open('https://www.sophialaurentofficiall.com/', '_blank');
+    // Abrir em nova aba com configurações de segurança
+    const newWindow = window.open('https://www.sophialaurentofficiall.com/', '_blank', 'noopener,noreferrer');
+    
+    // Fallback caso o popup seja bloqueado
+    if (!newWindow) {
+      window.location.href = 'https://www.sophialaurentofficiall.com/';
+    }
   };
 
   return (
