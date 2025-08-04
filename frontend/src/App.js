@@ -57,19 +57,12 @@ function App() {
     // Mostrar toast com drama
     toast({
       title: "🔮 O Destino Foi Revelado!",
-      description: `${card.name} traz uma mensagem especial para você, ${userData.name}`,
+      description: `${card.name} emerge das sombras para ${userData.name}...`,
       duration: 4000,
     });
 
-    // Avançar para próxima etapa após alguns segundos
-    setTimeout(() => {
-      setCurrentStep(3);
-      toast({
-        title: "✨ Momento Especial",
-        description: "O universo tem algo exclusivo reservado para você...",
-        duration: 3000,
-      });
-    }, 3000);
+    // NÃO avançar automaticamente - usuário deve clicar no CTA
+    // setTimeout removido - agora é manual
   };
 
   const resetApp = () => {
