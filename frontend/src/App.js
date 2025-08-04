@@ -73,6 +73,8 @@ function App() {
       duration: 3000,
     });
   };
+
+  const resetApp = () => {
     localStorage.removeItem(STORAGE_KEY);
     setHasCompletedTest(false);
     setCurrentStep(1);
