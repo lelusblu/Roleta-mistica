@@ -11,8 +11,16 @@ import { Card } from "./components/ui/card";
 import { Button } from "./components/ui/button";
 import { Sparkles, Gem, Moon, Stars, RotateCcw } from "lucide-react";
 import { addToHistory } from "./data/mock";
+import axios from "axios";
 
 const STORAGE_KEY = 'mystic_wheel_completed';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+// Função para gerar session ID único
+const generateSessionId = () => {
+  return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+};
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -20,6 +28,9 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [isSpinning, setIsSpinning] = useState(false);
   const [hasCompletedTest, setHasCompletedTest] = useState(false);
+  const [sessionId] = useState(() => generateSessionId());
+  const [leadId, setLeadId] = useState(null);
+  const [readingId, setReadingId] = useState(null);
 
   useEffect(() => {
     // Verificar se usuário já fez o teste
@@ -29,29 +40,67 @@ function App() {
     }
   }, []);
 
-  const handleUserFormSubmit = (formData) => {
-    setUserData(formData);
-    setCurrentStep(2);
-    
-    setTimeout(() => {
-      toast({
-        title: "🌟 Energias Alinhadas",
-        description: "O universo está preparando sua revelação...",
-        duration: 2000,
+  const handleUserFormSubmit = async (formData) => {
+    try {
+      // Enviar dados para o backend
+      const response = await axios.post(`${API}/leads/`, {
+        name: formData.name,
+        email: formData.email,
+        question: formData.question,
+        session_id: sessionId
       });
-    }, 1000);
+
+      if (response.data.success) {
+        setLeadId(response.data.lead_id);
+        setUserData(formData);
+        setCurrentStep(2);
+        
+        toast({
+          title: "🌟 Energias Alinhadas",
+          description: `${formData.name}, o universo está preparando sua revelação...`,
+          duration: 2000,
+        });
+      }
+    } catch (error) {
+      console.error('Erro ao salvar lead:', error);
+      toast({
+        title: "⚠️ Erro Temporário",
+        description: "Tente novamente em alguns instantes",
+        duration: 3000,
+      });
+    }
   };
 
-  const handleCardSelected = (card) => {
+  const handleCardSelected = async (card) => {
     setSelectedCard(card);
     
-    // Adicionar ao histórico (apenas para demo)
+    try {
+      // Salvar leitura no backend
+      const response = await axios.post(`${API}/readings/`, {
+        lead_id: leadId,
+        card_id: card.id,
+        card_name: card.name,
+        card_interpretation: card.interpretation,
+        question: userData.question,
+        session_id: sessionId
+      });
+
+      if (response.data.success) {
+        setReadingId(response.data.reading_id);
+      }
+    } catch (error) {
+      console.error('Erro ao salvar leitura:', error);
+    }
+    
+    // Adicionar ao histórico local (para demo)
     addToHistory(card, userData.question);
     
-    // Marcar como completado
+    // Marcar como completado localmente
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
       completedAt: new Date().toISOString(),
-      userData: userData
+      userData: userData,
+      leadId: leadId,
+      readingId: readingId
     }));
     
     // Mostrar toast com drama
@@ -60,12 +109,20 @@ function App() {
       description: `${card.name} emerge das sombras para ${userData.name}...`,
       duration: 4000,
     });
-
-    // NÃO avançar automaticamente - usuário deve clicar no CTA
-    // setTimeout removido - agora é manual
   };
 
-  const proceedToDestiny = () => {
+  const proceedToDestiny = async () => {
+    try {
+      // Registrar clique na promoção
+      if (readingId) {
+        await axios.put(`${API}/readings/${readingId}/promo-click`, {
+          clicked_at: new Date().toISOString()
+        });
+      }
+    } catch (error) {
+      console.error('Erro ao registrar clique na promoção:', error);
+    }
+
     setCurrentStep(3);
     toast({
       title: "🌟 Revelação Completa Desbloqueada",
@@ -80,6 +137,8 @@ function App() {
     setCurrentStep(1);
     setUserData(null);
     setSelectedCard(null);
+    setLeadId(null);
+    setReadingId(null);
     window.location.reload();
   };
 
