@@ -11,8 +11,15 @@ import uuid
 from datetime import datetime
 
 # Importar rotas
-from .routes.leads import router as leads_router
-from .routes.readings import router as readings_router
+try:
+    from routes.leads import router as leads_router
+    from routes.readings import router as readings_router
+except ImportError:
+    # Fallback for different import styles
+    import sys
+    sys.path.append('/app/backend')
+    from routes.leads import router as leads_router
+    from routes.readings import router as readings_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
