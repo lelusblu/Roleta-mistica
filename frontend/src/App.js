@@ -223,6 +223,8 @@ function App() {
                 <CardInterpretation 
                   card={selectedCard} 
                   question={userData?.question}
+                  userName={userData?.name}
+                  onProceedToDestiny={proceedToDestiny}
                 />
               ) : (
                 <div className="text-center py-8 md:py-16 px-4">
