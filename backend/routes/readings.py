@@ -4,7 +4,12 @@ import logging
 from bson import ObjectId
 from datetime import datetime
 
-from ..models.reading import Reading, ReadingCreate, ReadingResponse, PromoClickUpdate
+try:
+    from ..models.reading import Reading, ReadingCreate, ReadingResponse, PromoClickUpdate
+except ImportError:
+    import sys
+    sys.path.append('/app/backend')
+    from models.reading import Reading, ReadingCreate, ReadingResponse, PromoClickUpdate
 
 logger = logging.getLogger(__name__)
 
