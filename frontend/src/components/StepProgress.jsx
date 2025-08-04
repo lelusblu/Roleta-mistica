@@ -3,9 +3,9 @@ import { CheckCircle, Circle, User, Sparkles, Gift } from 'lucide-react';
 
 const StepProgress = ({ currentStep }) => {
   const steps = [
-    { id: 1, title: 'Seus Dados', icon: User, desc: 'Nome e email' },
-    { id: 2, title: 'Revelação', icon: Sparkles, desc: 'Consulta mística' },
-    { id: 3, title: 'Seu Destino', icon: Gift, desc: 'Segredo revelado' }
+    { id: 1, title: 'Tus Datos', icon: User, desc: 'Nombre y email' },
+    { id: 2, title: 'Revelación', icon: Sparkles, desc: 'Consulta mística' },
+    { id: 3, title: 'Tu Destino', icon: Gift, desc: 'Secreto revelado' }
   ];
 
   return (

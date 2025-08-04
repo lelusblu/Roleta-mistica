@@ -17,9 +17,16 @@ const STORAGE_KEY = 'mystic_wheel_completed';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// Função para gerar session ID único
+// Función para generar session ID único
 const generateSessionId = () => {
   return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+};
+
+// Facebook Pixel tracking functions
+const trackEvent = (eventName, parameters = {}) => {
+  if (window.fbq) {
+    window.fbq('track', eventName, parameters);
+  }
 };
 
 function App() {
@@ -33,16 +40,25 @@ function App() {
   const [readingId, setReadingId] = useState(null);
 
   useEffect(() => {
-    // Verificar se usuário já fez o teste
+    // Verificar si el usuario ya hizo la prueba
     const completed = localStorage.getItem(STORAGE_KEY);
     if (completed) {
       setHasCompletedTest(true);
     }
+    
+    // Track PageView
+    trackEvent('PageView');
   }, []);
 
   const handleUserFormSubmit = async (formData) => {
     try {
-      // Enviar dados para o backend
+      // Track Lead event
+      trackEvent('Lead', {
+        content_name: 'Formulario Consulta Mística',
+        content_category: 'Lead Generation'
+      });
+
+      // Enviar datos al backend
       const response = await axios.post(`${API}/leads/`, {
         name: formData.name,
         email: formData.email,
@@ -56,16 +72,16 @@ function App() {
         setCurrentStep(2);
         
         toast({
-          title: "🌟 Energias Alinhadas",
-          description: `${formData.name}, o universo está preparando sua revelação...`,
+          title: "🌟 Energías Alineadas",
+          description: `${formData.name}, el universo está preparando tu revelación...`,
           duration: 2000,
         });
       }
     } catch (error) {
-      console.error('Erro ao salvar lead:', error);
+      console.error('Error al guardar lead:', error);
       toast({
-        title: "⚠️ Erro Temporário",
-        description: "Tente novamente em alguns instantes",
+        title: "⚠️ Error Temporal",
+        description: "Inténtalo de nuevo en unos momentos",
         duration: 3000,
       });
     }
@@ -75,7 +91,13 @@ function App() {
     setSelectedCard(card);
     
     try {
-      // Salvar leitura no backend
+      // Track ViewContent event
+      trackEvent('ViewContent', {
+        content_name: `Carta ${card.name}`,
+        content_category: 'Lectura Tarot'
+      });
+
+      // Guardar lectura en el backend
       const response = await axios.post(`${API}/readings/`, {
         lead_id: leadId,
         card_id: card.id,
@@ -89,10 +111,10 @@ function App() {
         setReadingId(response.data.reading_id);
       }
     } catch (error) {
-      console.error('Erro ao salvar leitura:', error);
+      console.error('Error al guardar lectura:', error);
     }
     
-    // Adicionar ao histórico local (para demo)
+    // Agregar al historial local (para demo)
     addToHistory(card, userData.question);
     
     // Marcar como completado localmente
@@ -103,30 +125,38 @@ function App() {
       readingId: readingId
     }));
     
-    // Mostrar toast com drama
+    // Mostrar toast con drama
     toast({
-      title: "🔮 O Destino Foi Revelado!",
-      description: `${card.name} emerge das sombras para ${userData.name}...`,
+      title: "🔮 ¡El Destino Ha Sido Revelado!",
+      description: `${card.name} emerge de las sombras para ${userData.name}...`,
       duration: 4000,
     });
   };
 
   const proceedToDestiny = async () => {
     try {
-      // Registrar clique na promoção
+      // Track InitiateCheckout event
+      trackEvent('InitiateCheckout', {
+        content_name: 'Códice de la Abundancia',
+        content_category: 'Promoción',
+        value: 1,
+        currency: 'USD'
+      });
+
+      // Registrar clic en la promoción
       if (readingId) {
         await axios.put(`${API}/readings/${readingId}/promo-click`, {
           clicked_at: new Date().toISOString()
         });
       }
     } catch (error) {
-      console.error('Erro ao registrar clique na promoção:', error);
+      console.error('Error al registrar clic en la promoción:', error);
     }
 
     setCurrentStep(3);
     toast({
-      title: "🌟 Revelação Completa Desbloqueada",
-      description: "Prepare-se para descobrir o segredo dos Áureos...",
+      title: "🌟 Revelación Completa Desbloqueada",
+      description: "Prepárate para descubrir el secreto de los Áureos...",
       duration: 3000,
     });
   };
@@ -142,13 +172,13 @@ function App() {
     window.location.reload();
   };
 
-  // Se usuário já completou o teste
+  // Si el usuario ya completó la prueba
   if (hasCompletedTest) {
     const completedData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black relative overflow-hidden">
-        {/* Efeitos de fundo */}
+        {/* Efectos de fondo */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 text-amber-400/20 text-4xl animate-pulse">
             <Stars />
@@ -167,35 +197,43 @@ function App() {
         <div className="relative z-10 container mx-auto px-4 py-8">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-transparent mb-4">
-              Consulta Já Realizada
+              Consulta Ya Realizada
             </h1>
             <p className="text-amber-200 text-lg mb-6">
-              Você já descobriu seus segredos místicos, {completedData.userData?.name || 'visitante'}!
+              ¡Ya has descubierto tus secretos místicos, {completedData.userData?.name || 'visitante'}!
             </p>
           </div>
 
           <Card className="max-w-2xl mx-auto bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 border-amber-400/50 text-center p-8">
             <div className="text-6xl mb-4">🔮</div>
             <h3 className="text-2xl font-bold text-amber-400 mb-4">
-              O Universo Já Falou
+              El Universo Ya Ha Hablado
             </h3>
             <p className="text-amber-200 mb-6">
-              Sua jornada mística foi completada. O cosmos permite apenas uma consulta por alma para preservar a autenticidade da revelação.
+              Tu jornada mística ha sido completada. El cosmos permite solo una consulta por alma para preservar la autenticidad de la revelación.
             </p>
             <p className="text-amber-300/70 mb-6 text-sm">
-              Consulta realizada em: {new Date(completedData.completedAt).toLocaleDateString('pt-BR')}
+              Consulta realizada el: {new Date(completedData.completedAt).toLocaleDateString('es-ES')}
             </p>
             
             {/* Link para promocional */}
             <div className="bg-amber-900/30 rounded-lg p-4 border border-amber-400/50 mb-6">
               <p className="text-amber-300 font-medium mb-2">
-                🎁 Não perca seu acesso exclusivo:
+                🎁 No pierdas tu acceso exclusivo:
               </p>
               <Button 
-                onClick={() => window.open('https://www.sophialaurentofficiall.com/', '_blank')}
+                onClick={() => {
+                  trackEvent('Purchase', {
+                    content_name: 'Códice de la Abundancia',
+                    content_category: 'E-book',
+                    value: 1,
+                    currency: 'USD'
+                  });
+                  window.open('https://www.sophialaurentofficiall.com/', '_blank');
+                }}
                 className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold"
               >
-                Acessar Códice de la Abundancia
+                Acceder al Códice de la Abundancia
               </Button>
             </div>
 
@@ -205,7 +243,7 @@ function App() {
               className="border-amber-400/50 text-amber-400 hover:bg-amber-400/10"
             >
               <RotateCcw className="w-4 h-4 mr-2" />
-              Reiniciar (Para Teste)
+              Reiniciar (Para Prueba)
             </Button>
           </Card>
         </div>
@@ -216,7 +254,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black relative overflow-hidden">
-      {/* Efeitos de fundo */}
+      {/* Efectos de fondo */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 text-amber-400/20 text-4xl animate-pulse">
           <Stars />
@@ -236,31 +274,31 @@ function App() {
         {/* Header */}
         <div className="text-center mb-6 md:mb-8">
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 bg-clip-text text-transparent mb-2 md:mb-4">
-            Roleta Mística
+            Ruleta Mística
           </h1>
           <p className="text-amber-200 text-lg md:text-xl mb-1 md:mb-2">
-            Descubra os segredos do tarot
+            Descubre los secretos del tarot
           </p>
           <p className="text-amber-300/70 text-sm md:text-base">
-            Uma experiência única de revelação espiritual
+            Una experiencia única de revelación espiritual
           </p>
         </div>
 
         {/* Progress Bar */}
         <StepProgress currentStep={currentStep} />
 
-        {/* Content baseado na etapa */}
+        {/* Contenido basado en la etapa */}
         {currentStep === 1 && (
           <UserForm onSubmit={handleUserFormSubmit} />
         )}
 
         {currentStep === 2 && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-            {/* Coluna da Roleta */}
+            {/* Columna de la Ruleta */}
             <div className="flex flex-col space-y-4 md:space-y-8">
               <div className="text-center mb-4">
                 <h2 className="text-xl md:text-2xl font-bold text-amber-400 mb-2">
-                  {userData?.name}, concentre-se em sua pergunta
+                  {userData?.name}, concéntrate en tu pregunta
                 </h2>
                 <p className="text-amber-200 italic mb-4 text-sm md:text-base px-4">
                   "{userData?.question}"
@@ -276,7 +314,7 @@ function App() {
               </div>
             </div>
 
-            {/* Coluna da Interpretação */}
+            {/* Columna de la Interpretación */}
             <div className="space-y-6 md:space-y-8">
               {selectedCard ? (
                 <CardInterpretation 
@@ -289,18 +327,18 @@ function App() {
                 <div className="text-center py-8 md:py-16 px-4">
                   <div className="text-4xl md:text-6xl mb-4 animate-pulse">🔮</div>
                   <h3 className="text-xl md:text-2xl font-bold text-amber-400 mb-2">
-                    O Universo Está Escolhendo...
+                    El Universo Está Eligiendo...
                   </h3>
                   <p className="text-amber-200 text-sm md:text-base mb-4">
-                    {userData?.name}, sua carta está sendo selecionada pelas energias cósmicas
+                    {userData?.name}, tu carta está siendo seleccionada por las energías cósmicas
                   </p>
                   {!isSpinning && (
                     <div className="mt-4 p-4 bg-amber-900/30 rounded-lg border border-amber-400/30 max-w-sm mx-auto">
                       <p className="text-amber-300 font-bold text-base md:text-lg">
-                        👈 CLIQUE EM "GIRAR AGORA!"
+                        👈 ¡HAZ CLIC EN "GIRAR AHORA"!
                       </p>
                       <p className="text-amber-200 text-xs md:text-sm mt-2">
-                        Para ver o resultado da sua consulta
+                        Para ver el resultado de tu consulta
                       </p>
                     </div>
                   )}

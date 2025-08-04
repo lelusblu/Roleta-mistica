@@ -24,27 +24,27 @@ const UserForm = ({ onSubmit }) => {
     e.preventDefault();
     const newErrors = {};
 
-    // Validações
+    // Validaciones
     if (!formData.name.trim()) {
-      newErrors.name = 'Nome é obrigatório';
+      newErrors.name = 'El nombre es obligatorio';
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email é obrigatório';
+      newErrors.email = 'El email es obligatorio';
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Email inválido';
     }
 
     if (!formData.question.trim()) {
-      newErrors.question = 'Pergunta é obrigatória para uma leitura precisa';
+      newErrors.question = 'La pregunta es obligatoria para una lectura precisa';
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
       toast({
-        title: "✨ Preparando sua consulta mística...",
-        description: `${formData.name}, o universo está alinhando as energias para você`,
+        title: "✨ Preparando tu consulta mística...",
+        description: `${formData.name}, el universo está alineando las energías para ti`,
         duration: 3000,
       });
       onSubmit(formData);
@@ -68,24 +68,24 @@ const UserForm = ({ onSubmit }) => {
             </div>
           </div>
           <CardTitle className="text-xl md:text-2xl font-bold text-amber-400 mb-2">
-            Desperte Seu Destino Místico
+            Despierta Tu Destino Místico
           </CardTitle>
           <p className="text-amber-200 text-sm md:text-base">
-            O universo está pronto para revelar seus segredos mais profundos
+            El universo está listo para revelar tus secretos más profundos
           </p>
         </CardHeader>
         
         <CardContent className="px-4 md:px-6">
           <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-            {/* Nome */}
+            {/* Nombre */}
             <div className="space-y-2">
               <Label className="text-amber-400 flex items-center text-sm md:text-base">
                 <User className="w-4 h-4 mr-2" />
-                Qual é seu nome?
+                ¿Cuál es tu nombre?
               </Label>
               <Input
                 type="text"
-                placeholder="Digite seu nome completo"
+                placeholder="Escribe tu nombre completo"
                 value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
                 className={`bg-black/30 border-amber-400/30 text-amber-100 placeholder-amber-300/50 focus:border-amber-400 text-sm md:text-base py-3 ${
@@ -101,11 +101,11 @@ const UserForm = ({ onSubmit }) => {
             <div className="space-y-2">
               <Label className="text-amber-400 flex items-center text-sm md:text-base">
                 <Mail className="w-4 h-4 mr-2" />
-                Seu email para receber os insights místicos
+                Tu email para recibir las revelaciones místicas
               </Label>
               <Input
                 type="email"
-                placeholder="seu@email.com"
+                placeholder="tu@email.com"
                 value={formData.email}
                 onChange={(e) => handleChange('email', e.target.value)}
                 className={`bg-black/30 border-amber-400/30 text-amber-100 placeholder-amber-300/50 focus:border-amber-400 text-sm md:text-base py-3 ${
@@ -117,14 +117,14 @@ const UserForm = ({ onSubmit }) => {
               )}
             </div>
 
-            {/* Pergunta */}
+            {/* Pregunta */}
             <div className="space-y-2">
               <Label className="text-amber-400 flex items-center text-sm md:text-base">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                Qual pergunta queima em seu coração?
+                ¿Qué pregunta arde en tu corazón?
               </Label>
               <Textarea
-                placeholder="Ex: Que energia devo focar para atrair abundância em minha vida?"
+                placeholder="Ej: ¿Qué energía debo enfocar para atraer abundancia en mi vida?"
                 value={formData.question}
                 onChange={(e) => handleChange('question', e.target.value)}
                 className={`bg-black/30 border-amber-400/30 text-amber-100 placeholder-amber-300/50 focus:border-amber-400 min-h-16 md:min-h-20 text-sm md:text-base ${
@@ -136,7 +136,7 @@ const UserForm = ({ onSubmit }) => {
                 <p className="text-red-400 text-xs md:text-sm">{errors.question}</p>
               )}
               <p className="text-amber-300/50 text-xs">
-                Seja específico para uma leitura mais precisa • {formData.question.length}/200
+                Sé específico para una lectura más precisa • {formData.question.length}/200
               </p>
             </div>
 

@@ -11,12 +11,12 @@ const TarotWheel = ({ onCardSelected, isSpinning, setIsSpinning }) => {
     
     setIsSpinning(true);
     
-    // Calcular nova rotação
+    // Calcular nueva rotación
     const spins = 5 + Math.random() * 3;
     const newRotation = rotation + (360 * spins) + Math.random() * 360;
     setRotation(newRotation);
     
-    // Selecionar carta após animação
+    // Seleccionar carta después de la animación
     setTimeout(() => {
       const card = getRandomCard();
       onCardSelected(card);
@@ -26,24 +26,24 @@ const TarotWheel = ({ onCardSelected, isSpinning, setIsSpinning }) => {
 
   return (
     <div className="flex flex-col items-center space-y-4 md:space-y-8 px-4">
-      {/* Instruções claras - Responsivo */}
+      {/* Instrucciones muy claras */}
       <div className="text-center mb-4 md:mb-6 p-4 md:p-6 bg-gradient-to-r from-amber-900/40 to-amber-800/40 rounded-xl border-2 border-amber-400/60 shadow-2xl w-full max-w-lg">
         <h3 className="text-xl md:text-3xl font-bold text-amber-300 mb-2 md:mb-3 animate-pulse">
-          🎯 CLIQUE NO BOTÃO PARA GIRAR
+          🎯 HAZ CLIC EN EL BOTÓN PARA GIRAR
         </h3>
         <p className="text-amber-100 text-lg md:text-xl font-semibold">
-          ↓ Sua carta mística será revelada ↓
+          ↓ Tu carta mística será revelada ↓
         </p>
       </div>
 
-      {/* Roleta Responsiva */}
+      {/* Ruleta Responsiva */}
       <div className="relative flex justify-center items-center">
         {/* Indicador */}
         <div className="absolute -top-4 md:-top-6 left-1/2 transform -translate-x-1/2 z-50">
           <div className="w-0 h-0 border-l-6 md:border-l-8 border-r-6 md:border-r-8 border-b-12 md:border-b-16 border-l-transparent border-r-transparent border-b-amber-400 drop-shadow-lg"></div>
         </div>
         
-        {/* Círculo da roleta - Tamanho responsivo */}
+        {/* Círculo de la ruleta - Tamaño responsivo */}
         <div className="relative">
           <div 
             className="w-64 h-64 md:w-80 md:h-80 rounded-full border-6 md:border-8 border-amber-400 shadow-2xl relative overflow-hidden"
@@ -64,27 +64,27 @@ const TarotWheel = ({ onCardSelected, isSpinning, setIsSpinning }) => {
               transition: isSpinning ? 'transform 3s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'
             }}
           >
-            {/* Símbolos místicos fixos - Centro responsivo */}
+            {/* Símbolos místicos fijos - Centro responsivo */}
             <div className="absolute inset-3 md:inset-4 rounded-full bg-gray-900/80 flex items-center justify-center">
               <div className="text-4xl md:text-6xl text-amber-400">
                 🔮
               </div>
             </div>
             
-            {/* Marcações da roleta - Tamanhos responsivos */}
+            {/* Marcaciones de la ruleta - Tamaños responsivos */}
             <div className="absolute top-3 md:top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"></div>
             <div className="absolute top-1/2 right-3 md:right-4 transform -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"></div>
             <div className="absolute bottom-3 md:bottom-4 left-1/2 transform -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"></div>
             <div className="absolute top-1/2 left-3 md:left-4 transform -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"></div>
             
-            {/* Marcações diagonais */}
+            {/* Marcaciones diagonales */}
             <div className="absolute top-8 md:top-12 right-8 md:right-12 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"></div>
             <div className="absolute top-8 md:top-12 left-8 md:left-12 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"></div>
             <div className="absolute bottom-8 md:bottom-12 right-8 md:right-12 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"></div>
             <div className="absolute bottom-8 md:bottom-12 left-8 md:left-12 w-3 h-3 md:w-4 md:h-4 bg-amber-400 rounded-full"></div>
           </div>
 
-          {/* Efeitos visuais - Responsivos */}
+          {/* Efectos visuales - Responsivos */}
           {isSpinning && (
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute inset-0 rounded-full border-3 md:border-4 border-amber-400/50 animate-ping"></div>
@@ -95,7 +95,7 @@ const TarotWheel = ({ onCardSelected, isSpinning, setIsSpinning }) => {
         </div>
       </div>
       
-      {/* Botão de girar - Responsivo */}
+      {/* Botón de girar - Responsivo */}
       <div className="text-center space-y-4 md:space-y-6 w-full max-w-sm">
         <Button 
           onClick={spinWheel} 
@@ -111,7 +111,7 @@ const TarotWheel = ({ onCardSelected, isSpinning, setIsSpinning }) => {
           ) : (
             <>
               <Play className="mr-3 md:mr-4 h-6 w-6 md:h-8 md:w-8" />
-              🎯 GIRAR AGORA!
+              🎯 ¡GIRAR AHORA!
             </>
           )}
         </Button>
@@ -119,19 +119,19 @@ const TarotWheel = ({ onCardSelected, isSpinning, setIsSpinning }) => {
         {isSpinning ? (
           <div className="space-y-2 md:space-y-3">
             <p className="text-amber-300 text-lg md:text-2xl font-bold animate-pulse">
-              ✨ O universo está escolhendo...
+              ✨ El universo está eligiendo...
             </p>
             <p className="text-amber-200 text-base md:text-lg">
-              🔮 Aguarde a revelação mística
+              🔮 Aguarda la revelación mística
             </p>
           </div>
         ) : (
           <div className="space-y-1 md:space-y-2">
             <p className="text-amber-400 text-lg md:text-2xl font-bold animate-bounce">
-              👆 CLIQUE NO BOTÃO ACIMA!
+              👆 ¡HAZ CLIC EN EL BOTÓN DE ARRIBA!
             </p>
             <p className="text-amber-300 text-base md:text-lg">
-              Para descobrir sua carta do destino
+              Para descubrir tu carta del destino
             </p>
           </div>
         )}
