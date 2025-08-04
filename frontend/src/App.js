@@ -8,7 +8,7 @@ import ReadingHistory from "./components/ReadingHistory";
 import { Input } from "./components/ui/input";
 import { Button } from "./components/ui/button";
 import { Card } from "./components/ui/card";
-import { Sparkles, Crystal, Moon, Stars } from "lucide-react";
+import { Sparkles, Gem, Moon, Stars } from "lucide-react";
 import { getMockReadingHistory, addToHistory } from "./data/mock";
 
 function App() {
