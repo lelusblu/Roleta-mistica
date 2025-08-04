@@ -1,100 +1,100 @@
-// Mock data para cartas de tarot e interpretações
+// Mock data para cartas de tarot e interpretaciones en español
 export const tarotCards = [
   {
     id: 1,
-    name: "O Louco",
+    name: "El Loco",
     nameEn: "The Fool",
-    arcana: "Arcano Maior",
+    arcana: "Arcano Mayor",
     image: "🌟",
     meanings: {
-      upright: "Novos começos, espontaneidade, fé no universo",
-      reversed: "Imprudência, negligência, falta de direção"
+      upright: "Nuevos comienzos, espontaneidad, fe en el universo",
+      reversed: "Imprudencia, negligencia, falta de dirección"
     },
-    interpretation: "O Louco representa o início de uma jornada espiritual. É hora de confiar no universo e dar o primeiro passo em direção ao desconhecido. Sua energia jovem e otimista o guiará."
+    interpretation: "El Loco representa el inicio de un viaje espiritual. Es hora de confiar en el universo y dar el primer paso hacia lo desconocido. Tu energía joven y optimista te guiará."
   },
   {
     id: 2,
-    name: "O Mago",
+    name: "El Mago",
     nameEn: "The Magician", 
-    arcana: "Arcano Maior",
+    arcana: "Arcano Mayor",
     image: "🔮",
     meanings: {
-      upright: "Manifestação, poder pessoal, ação",
-      reversed: "Manipulação, má intenção, falta de energia"
+      upright: "Manifestación, poder personal, acción",
+      reversed: "Manipulación, mala intención, falta de energía"
     },
-    interpretation: "O Mago indica que você tem todas as ferramentas necessárias para manifestar seus desejos. É momento de agir com confiança e transformar suas visões em realidade."
+    interpretation: "El Mago indica que tienes todas las herramientas necesarias para manifestar tus deseos. Es momento de actuar con confianza y transformar tus visiones en realidad."
   },
   {
     id: 3,
-    name: "A Sacerdotisa",
+    name: "La Sacerdotisa",
     nameEn: "The High Priestess",
-    arcana: "Arcano Maior", 
+    arcana: "Arcano Mayor", 
     image: "🌙",
     meanings: {
-      upright: "Intuição, mistério, sabedoria interior",
-      reversed: "Segredos ocultos, falta de intuição"
+      upright: "Intuición, misterio, sabiduría interior",
+      reversed: "Secretos ocultos, falta de intuición"
     },
-    interpretation: "A Sacerdotisa convida você a confiar em sua intuição. As respostas que busca estão dentro de você. É tempo de silenciar a mente e ouvir a voz da alma."
+    interpretation: "La Sacerdotisa te invita a confiar en tu intuición. Las respuestas que buscas están dentro de ti. Es tiempo de silenciar la mente y escuchar la voz del alma."
   },
   {
     id: 4,
-    name: "A Imperatriz",
+    name: "La Emperatriz",
     nameEn: "The Empress",
-    arcana: "Arcano Maior",
+    arcana: "Arcano Mayor",
     image: "🌺",
     meanings: {
-      upright: "Feminilidade, criatividade, abundância",
-      reversed: "Dependência, negligência criativa"
+      upright: "Feminidad, creatividad, abundancia",
+      reversed: "Dependencia, negligencia creativa"
     },
-    interpretation: "A Imperatriz traz abundância e criatividade para sua vida. É momento de nutrir seus projetos e relacionamentos com amor e paciência."
+    interpretation: "La Emperatriz trae abundancia y creatividad a tu vida. Es momento de nutrir tus proyectos y relaciones con amor y paciencia."
   },
   {
     id: 5,
-    name: "O Imperador",
+    name: "El Emperador",
     nameEn: "The Emperor",
-    arcana: "Arcano Maior",
+    arcana: "Arcano Mayor",
     image: "👑",
     meanings: {
-      upright: "Autoridade, estrutura, controle",
-      reversed: "Tirania, rigidez excessiva"
+      upright: "Autoridad, estructura, control",
+      reversed: "Tiranía, rigidez excesiva"
     },
-    interpretation: "O Imperador representa liderança e estabilidade. É hora de assumir o controle de sua vida e criar estruturas sólidas para seus objetivos."
+    interpretation: "El Emperador representa liderazgo y estabilidad. Es hora de asumir el control de tu vida y crear estructuras sólidas para tus objetivos."
   },
   {
     id: 6,
-    name: "O Hierofante",
+    name: "El Hierofante",
     nameEn: "The Hierophant",
-    arcana: "Arcano Maior",
+    arcana: "Arcano Mayor",
     image: "📿",
     meanings: {
-      upright: "Tradição, educação, conformidade",
-      reversed: "Rebelião, subversão, novas abordagens"
+      upright: "Tradición, educación, conformidad",
+      reversed: "Rebelión, subversión, nuevos enfoques"
     },
-    interpretation: "O Hierofante sugere buscar conhecimento através de mestres ou tradições. Às vezes, seguir o caminho convencional pode trazer as respostas que procura."
+    interpretation: "El Hierofante sugiere buscar conocimiento a través de maestros o tradiciones. A veces, seguir el camino convencional puede traer las respuestas que buscas."
   },
   {
     id: 7,
-    name: "Os Enamorados",
+    name: "Los Enamorados",
     nameEn: "The Lovers",
-    arcana: "Arcano Maior",
+    arcana: "Arcano Mayor",
     image: "💕",
     meanings: {
-      upright: "Amor, harmonia, relacionamentos",
-      reversed: "Desarmonia, má escolha amorosa"
+      upright: "Amor, armonía, relaciones",
+      reversed: "Desarmonía, mala elección amorosa"
     },
-    interpretation: "Os Enamorados falam de conexões profundas e escolhas importantes no amor. Uma decisão significativa sobre um relacionamento está por vir."
+    interpretation: "Los Enamorados hablan de conexiones profundas y elecciones importantes en el amor. Una decisión significativa sobre una relación está por venir."
   },
   {
     id: 8,
-    name: "A Carruagem",
+    name: "La Carroza",
     nameEn: "The Chariot",
-    arcana: "Arcano Maior",
+    arcana: "Arcano Mayor",
     image: "🏛️",
     meanings: {
-      upright: "Determinação, controle, vitória",
-      reversed: "Falta de controle, derrota"
+      upright: "Determinación, control, victoria",
+      reversed: "Falta de control, derrota"
     },
-    interpretation: "A Carruagem indica vitória através da determinação. Mantenha o foco em seus objetivos e você superará todos os obstáculos em seu caminho."
+    interpretation: "La Carroza indica victoria a través de la determinación. Mantén el enfoque en tus objetivos y superarás todos los obstáculos en tu camino."
   }
 ];
 
@@ -103,22 +103,22 @@ export const getMockReadingHistory = () => [
     id: 1,
     date: "2024-01-15T10:30:00Z",
     card: tarotCards[0],
-    question: "Que energia devo focar hoje?",
-    timestamp: "Hoje às 10:30"
+    question: "¿Qué energía debo enfocar hoy?",
+    timestamp: "Hoy a las 10:30"
   },
   {
     id: 2, 
     date: "2024-01-14T15:45:00Z",
     card: tarotCards[2],
-    question: "Como posso melhorar meu relacionamento?",
-    timestamp: "Ontem às 15:45"
+    question: "¿Cómo puedo mejorar mi relación?",
+    timestamp: "Ayer a las 15:45"
   },
   {
     id: 3,
     date: "2024-01-13T09:15:00Z", 
     card: tarotCards[1],
-    question: "Qual caminho seguir na carreira?",
-    timestamp: "2 dias atrás às 09:15"
+    question: "¿Qué camino seguir en mi carrera?",
+    timestamp: "Hace 2 días a las 09:15"
   }
 ];
 
@@ -133,10 +133,10 @@ export const addToHistory = (card, question) => {
     date: new Date().toISOString(),
     card,
     question,
-    timestamp: "Agora mesmo"
+    timestamp: "Ahora mismo"
   };
   
-  // Em um app real, isso seria salvo no backend
-  console.log("Nova leitura adicionada:", newReading);
+  // En una app real, esto sería guardado en el backend
+  console.log("Nueva lectura agregada:", newReading);
   return newReading;
 };
