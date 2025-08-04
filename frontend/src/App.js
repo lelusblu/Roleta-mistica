@@ -65,7 +65,14 @@ function App() {
     // setTimeout removido - agora é manual
   };
 
-  const resetApp = () => {
+  const proceedToDestiny = () => {
+    setCurrentStep(3);
+    toast({
+      title: "🌟 Revelação Completa Desbloqueada",
+      description: "Prepare-se para descobrir o segredo dos Áureos...",
+      duration: 3000,
+    });
+  };
     localStorage.removeItem(STORAGE_KEY);
     setHasCompletedTest(false);
     setCurrentStep(1);
