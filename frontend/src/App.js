@@ -55,7 +55,7 @@ function App() {
           <Stars />
         </div>
         <div className="absolute top-40 right-20 text-purple-400/20 text-3xl animate-bounce">
-          <Crystal />
+          <Gem />
         </div>
         <div className="absolute bottom-20 left-20 text-amber-400/20 text-5xl animate-pulse">
           <Moon />
