@@ -4,14 +4,13 @@ import { Toaster } from "./components/ui/toaster";
 import { toast } from "./hooks/use-toast";
 import TarotWheel from "./components/TarotWheel";
 import CardInterpretation from "./components/CardInterpretation";
-import ReadingHistory from "./components/ReadingHistory";
 import UserForm from "./components/UserForm";
 import StepProgress from "./components/StepProgress";
 import PromotionalPage from "./components/PromotionalPage";
 import { Card } from "./components/ui/card";
 import { Button } from "./components/ui/button";
 import { Sparkles, Gem, Moon, Stars, RotateCcw } from "lucide-react";
-import { getMockReadingHistory, addToHistory } from "./data/mock";
+import { addToHistory } from "./data/mock";
 
 const STORAGE_KEY = 'mystic_wheel_completed';
 
@@ -20,7 +19,6 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isSpinning, setIsSpinning] = useState(false);
-  const [readings, setReadings] = useState([]);
   const [hasCompletedTest, setHasCompletedTest] = useState(false);
 
   useEffect(() => {
@@ -29,9 +27,6 @@ function App() {
     if (completed) {
       setHasCompletedTest(true);
     }
-    
-    // Carregar histórico mock na inicialização
-    setReadings(getMockReadingHistory());
   }, []);
 
   const handleUserFormSubmit = (formData) => {
@@ -50,9 +45,8 @@ function App() {
   const handleCardSelected = (card) => {
     setSelectedCard(card);
     
-    // Adicionar ao histórico
-    const newReading = addToHistory(card, userData.question);
-    setReadings(prev => [newReading, ...prev]);
+    // Adicionar ao histórico (apenas para demo)
+    addToHistory(card, userData.question);
     
     // Marcar como completado
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
@@ -207,7 +201,7 @@ function App() {
                 <h2 className="text-2xl font-bold text-amber-400 mb-2">
                   {userData?.name}, concentre-se em sua pergunta
                 </h2>
-                <p className="text-amber-200 italic">
+                <p className="text-amber-200 italic mb-4">
                   "{userData?.question}"
                 </p>
               </div>
@@ -237,6 +231,16 @@ function App() {
                   <p className="text-amber-200">
                     {userData?.name}, sua carta está sendo selecionada pelas energias cósmicas
                   </p>
+                  {!isSpinning && (
+                    <div className="mt-4 p-4 bg-amber-900/30 rounded-lg border border-amber-400/30">
+                      <p className="text-amber-300 font-bold text-lg">
+                        👈 CLIQUE EM "GIRAR ROLETA MÍSTICA"
+                      </p>
+                      <p className="text-amber-200 text-sm mt-2">
+                        Para ver o resultado da sua consulta
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -245,13 +249,6 @@ function App() {
 
         {currentStep === 3 && (
           <PromotionalPage userData={userData} />
-        )}
-
-        {/* Histórico - apenas nas etapas 1 e 2 */}
-        {currentStep <= 2 && (
-          <div className="mt-12">
-            <ReadingHistory readings={readings} />
-          </div>
         )}
       </div>
 
