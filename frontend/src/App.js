@@ -149,15 +149,39 @@ function App() {
         content_category: 'Lectura Tarot'
       });
 
-      // Guardar lectura en el backend
-      const response = await axios.post(`${API}/readings/`, {
-        lead_id: leadId,
-        card_id: card.id,
-        card_name: card.name,
-        card_interpretation: card.interpretation,
-        question: userData.question,
-        session_id: sessionId
-      });
+      let response;
+      if (IS_STATIC_MODE) {
+        // Modo estático - usar mock
+        response = await mockBackendCall('reading', {
+          lead_id: leadId,
+          card_id: card.id,
+          card_name: card.name,
+          card_interpretation: card.interpretation,
+          question: userData.question,
+          session_id: sessionId
+        });
+        
+        // Guardar en localStorage para modo estático
+        const readingData = {
+          lead_id: leadId,
+          card: card,
+          question: userData.question,
+          session_id: sessionId,
+          reading_id: response.data.reading_id,
+          created_at: new Date().toISOString()
+        };
+        localStorage.setItem('static_reading_data', JSON.stringify(readingData));
+      } else {
+        // Modo con backend
+        response = await axios.post(`${API}/readings/`, {
+          lead_id: leadId,
+          card_id: card.id,
+          card_name: card.name,
+          card_interpretation: card.interpretation,
+          question: userData.question,
+          session_id: sessionId
+        });
+      }
 
       if (response.data.success) {
         setReadingId(response.data.reading_id);
@@ -174,7 +198,8 @@ function App() {
       completedAt: new Date().toISOString(),
       userData: userData,
       leadId: leadId,
-      readingId: readingId
+      readingId: readingId,
+      mode: IS_STATIC_MODE ? 'static' : 'backend'
     }));
     
     // Mostrar toast con drama
