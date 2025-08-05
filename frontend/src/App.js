@@ -90,13 +90,33 @@ function App() {
         content_category: 'Lead Generation'
       });
 
-      // Enviar datos al backend
-      const response = await axios.post(`${API}/leads/`, {
-        name: formData.name,
-        email: formData.email,
-        question: formData.question,
-        session_id: sessionId
-      });
+      let response;
+      if (IS_STATIC_MODE) {
+        // Modo estático - usar mock
+        response = await mockBackendCall('lead', {
+          name: formData.name,
+          email: formData.email,
+          question: formData.question,
+          session_id: sessionId
+        });
+        
+        // Guardar en localStorage para modo estático
+        const leadData = {
+          ...formData,
+          session_id: sessionId,
+          lead_id: response.data.lead_id,
+          created_at: new Date().toISOString()
+        };
+        localStorage.setItem('static_lead_data', JSON.stringify(leadData));
+      } else {
+        // Modo con backend
+        response = await axios.post(`${API}/leads/`, {
+          name: formData.name,
+          email: formData.email,
+          question: formData.question,
+          session_id: sessionId
+        });
+      }
 
       if (response.data.success) {
         setLeadId(response.data.lead_id);
