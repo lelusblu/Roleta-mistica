@@ -146,7 +146,7 @@ npm run build
 ```bash
 cd /home/ruleta-mistica/backend
 source venv/bin/activate
-pm2 start "python server.py" --name "backend"
+pm2 start "uvicorn server:app --host 0.0.0.0 --port 8001" --name backend
 ```
 
 ### **Verificar se backend iniciou:**
