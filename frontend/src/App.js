@@ -15,7 +15,8 @@ import axios from "axios";
 
 const STORAGE_KEY = 'mystic_wheel_completed';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const API = BACKEND_URL ? `${BACKEND_URL}/api` : null;
+const IS_STATIC_MODE = !BACKEND_URL || process.env.REACT_APP_MODE === 'static';
 
 // Función para generar session ID único
 const generateSessionId = () => {
@@ -27,6 +28,37 @@ const trackEvent = (eventName, parameters = {}) => {
   if (window.fbq) {
     window.fbq('track', eventName, parameters);
   }
+};
+
+// Mock backend calls for static mode
+const mockBackendCall = async (type, data = {}) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      switch (type) {
+        case 'lead':
+          resolve({
+            data: {
+              success: true,
+              lead_id: `mock_lead_${Date.now()}`,
+              message: 'Lead capturado exitosamente (modo estático)',
+              existing: false
+            }
+          });
+          break;
+        case 'reading':
+          resolve({
+            data: {
+              success: true,
+              reading_id: `mock_reading_${Date.now()}`,
+              message: 'Lectura registrada exitosamente (modo estático)'
+            }
+          });
+          break;
+        default:
+          resolve({ data: { success: true } });
+      }
+    }, 500);
+  });
 };
 
 function App() {
