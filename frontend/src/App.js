@@ -222,9 +222,20 @@ function App() {
 
       // Registrar clic en la promoción
       if (readingId) {
-        await axios.put(`${API}/readings/${readingId}/promo-click`, {
-          clicked_at: new Date().toISOString()
-        });
+        if (IS_STATIC_MODE) {
+          // Modo estático - guardar en localStorage
+          const promoData = {
+            reading_id: readingId,
+            clicked_at: new Date().toISOString(),
+            mode: 'static'
+          };
+          localStorage.setItem('static_promo_click', JSON.stringify(promoData));
+        } else {
+          // Modo con backend
+          await axios.put(`${API}/readings/${readingId}/promo-click`, {
+            clicked_at: new Date().toISOString()
+          });
+        }
       }
     } catch (error) {
       console.error('Error al registrar clic en la promoción:', error);
