@@ -1,7 +1,9 @@
-🎯 DEPLOY MANUAL NETLIFY - INSTRUÇÕES - CORRIGIDO V2
+🎯 DEPLOY MANUAL NETLIFY - INSTRUÇÕES - CORRIGIDO V3
 
 ✅ ARQUIVOS DE BUILD DISPONÍVEIS
-✅ Arquivo .nvmrc adicionado para corrigir versão Node.js
+✅ Arquivo .nvmrc atualizado para Node.js 16.20.0
+✅ Browserslist atualizado para caniuse-lite mais recente
+✅ React 18.2.0 (versão estável)
 
 📋 PASSOS PARA DEPLOY:
 
