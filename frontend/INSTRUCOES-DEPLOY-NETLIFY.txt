@@ -1,0 +1,26 @@
+🎯 DEPLOY MANUAL NETLIFY - INSTRUÇÕES
+
+✅ ARQUIVO PRONTO: roleta-mistica-build.tar.gz
+
+📋 PASSOS PARA DEPLOY:
+
+1. BAIXE O ARQUIVO:
+   - Faça download do arquivo "roleta-mistica-build.tar.gz"
+
+2. EXTRAIA O ARQUIVO:
+   - Descompacte o arquivo .tar.gz
+   - Você verá uma pasta chamada "build"
+
+3. DEPLOY NO NETLIFY:
+   - Acesse: https://app.netlify.com/
+   - Clique em: "Add new site" → "Deploy manually"
+   - ARRASTE A PASTA "build" para a área de upload
+   - Aguarde o upload terminar
+
+🎉 RESULTADO ESPERADO:
+- Site funcionando imediatamente
+- URL do Netlify disponível
+- Aplicação roleta mística online!
+
+📧 SUPORTE:
+Se tiver problemas, me avise imediatamente!
