@@ -104,10 +104,10 @@ const CardInterpretation = ({ card, question, userName, onProceedToDestiny }) =>
               <Button 
                 onClick={onProceedToDestiny}
                 size="lg"
-                className="w-full max-w-md mx-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-4 md:py-6 px-8 md:px-12 text-xl md:text-2xl rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 flex items-center justify-center"
+                className="w-full max-w-md mx-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-4 md:py-6 px-8 md:px-12 text-lg md:text-xl rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 flex items-center justify-center"
               >
-                <Crown className="mr-3 h-6 w-6 md:h-8 md:w-8" />
-                🏛️ REVELAR EL SECRETO DE LOS ÁUREOS
+                <Crown className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+                🏛️ REVELAR EL SECRETO
               </Button>
               
               <p className="text-amber-300/70 text-sm md:text-base mt-4">
