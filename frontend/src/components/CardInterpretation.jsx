@@ -89,7 +89,7 @@ const CardInterpretation = ({ card, question, userName, onProceedToDestiny }) =>
 
           {/* CTA Dramático */}
           {showCTA && (
-            <div className="bg-gradient-to-r from-amber-900/60 to-amber-700/60 rounded-xl p-6 md:p-8 border-2 border-amber-400 shadow-2xl text-center transform animate-pulse">
+            <div className="mt-8 bg-gradient-to-r from-amber-900/60 to-amber-700/60 rounded-xl p-6 md:p-8 border-2 border-amber-400 shadow-2xl text-center">
               <div className="text-4xl md:text-6xl mb-4">✨</div>
               <h3 className="text-2xl md:text-3xl font-bold text-amber-300 mb-4">
                 Pero Esto Es Solo el Comienzo...
@@ -104,7 +104,7 @@ const CardInterpretation = ({ card, question, userName, onProceedToDestiny }) =>
               <Button 
                 onClick={onProceedToDestiny}
                 size="lg"
-                className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-4 md:py-6 px-8 md:px-12 text-xl md:text-2xl rounded-full shadow-2xl transform transition-all duration-300 hover:scale-110 animate-bounce"
+                className="w-full max-w-md mx-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-4 md:py-6 px-8 md:px-12 text-xl md:text-2xl rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 flex items-center justify-center"
               >
                 <Crown className="mr-3 h-6 w-6 md:h-8 md:w-8" />
                 🏛️ REVELAR EL SECRETO DE LOS ÁUREOS
