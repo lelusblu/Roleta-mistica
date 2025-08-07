@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Roleta-mistica/static/css/main.1163c827.css",
-    "main.js": "/Roleta-mistica/static/js/main.5b64e8e9.js",
+    "main.css": "/Roleta-mistica/static/css/main.1c81173c.css",
+    "main.js": "/Roleta-mistica/static/js/main.06335c54.js",
     "index.html": "/Roleta-mistica/index.html",
-    "main.1163c827.css.map": "/Roleta-mistica/static/css/main.1163c827.css.map",
-    "main.5b64e8e9.js.map": "/Roleta-mistica/static/js/main.5b64e8e9.js.map"
+    "main.1c81173c.css.map": "/Roleta-mistica/static/css/main.1c81173c.css.map",
+    "main.06335c54.js.map": "/Roleta-mistica/static/js/main.06335c54.js.map"
   },
   "entrypoints": [
-    "static/css/main.1163c827.css",
-    "static/js/main.5b64e8e9.js"
+    "static/css/main.1c81173c.css",
+    "static/js/main.06335c54.js"
   ]
 }
