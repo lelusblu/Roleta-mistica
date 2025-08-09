@@ -1,0 +1,30 @@
+🔧 CORREÇÕES MOBILE MAIS AGRESSIVAS APLICADAS!
+
+✅ MUDANÇAS FEITAS:
+
+**Botão 1 - "VER SECRETO" (era "REVELAR EL SECRETO"):**
+- ✅ Texto muito mais curto: "VER SECRETO" 
+- ✅ Size: "sm" (menor que antes)
+- ✅ Padding: py-2 px-3 (super compacto)
+- ✅ Font: text-xs (extra small no mobile)
+- ✅ Ícones: h-3 w-3 (bem pequenos)
+- ✅ Max-width: max-w-xs (controle rígido)
+
+**Botão 2 - "VER CÓDICE" (era "DESCUBRIR EL CÓDICE"):**  
+- ✅ Texto encurtado: "VER CÓDICE"
+- ✅ Mesmas configurações compactas
+- ✅ Centralização perfeita
+- ✅ Ícones proporcionais
+
+📱 COMO TESTAR:
+1. Atualize no GitHub repositório "Roleta-mistica-hostinger"
+2. Baixe e substitua no Hostinger
+3. Teste em mentalidadcreciente.online no mobile
+
+🎯 RESULTADO ESPERADO:
+- Botões muito menores e compactos
+- Texto cabendo perfeitamente
+- Visual limpo e profissional
+- Centralizado em qualquer tela
+
+✅ Agora os botões devem ficar perfeitos no mobile!
