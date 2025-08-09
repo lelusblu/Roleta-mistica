@@ -102,12 +102,12 @@ const PromotionalPage = ({ userData }) => {
           <div className="text-center">
             <Button 
               onClick={handleCTAClick}
-              size="lg"
-              className="w-full max-w-sm mx-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-4 px-6 text-base md:text-xl rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 animate-pulse flex items-center justify-center"
+              size="sm"
+              className="w-full max-w-xs mx-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-2 px-3 text-xs md:text-xl rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 animate-pulse flex items-center justify-center"
             >
-              <BookOpen className="mr-2 h-5 w-5 md:h-6 md:w-6" />
-              DESCUBRIR EL CÓDICE
-              <ExternalLink className="ml-2 h-5 w-5 md:h-6 md:w-6" />
+              <BookOpen className="mr-1 h-3 w-3 md:h-6 md:w-6" />
+              VER CÓDICE
+              <ExternalLink className="ml-1 h-3 w-3 md:h-6 md:w-6" />
             </Button>
             
             <p className="text-amber-300/70 text-sm mt-4">
