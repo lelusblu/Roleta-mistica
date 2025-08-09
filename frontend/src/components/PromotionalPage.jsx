@@ -103,11 +103,9 @@ const PromotionalPage = ({ userData }) => {
             <Button 
               onClick={handleCTAClick}
               size="sm"
-              className="w-full max-w-xs mx-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-2 px-3 text-xs md:text-xl rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 animate-pulse flex items-center justify-center"
+              className="w-32 mx-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-2 px-2 text-xs rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 animate-pulse flex items-center justify-center"
             >
-              <BookOpen className="mr-1 h-3 w-3 md:h-6 md:w-6" />
-              VER CÓDICE
-              <ExternalLink className="ml-1 h-3 w-3 md:h-6 md:w-6" />
+              📖 VER CÓDICE
             </Button>
             
             <p className="text-amber-300/70 text-sm mt-4">
