@@ -319,9 +319,11 @@ function App() {
                   });
                   window.open('https://www.sophialaurentofficiall.com/', '_blank');
                 }}
-                className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold"
+                size="lg"
+                className="w-64 mx-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-900 font-bold py-4 px-6 text-sm rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 animate-pulse flex items-center justify-center border-4 border-amber-300"
               >
-                Acceder al Códice de la Abundancia
+                <BookOpen className="mr-2 h-5 w-5" />
+                ACCEDER AL CÓDICE
               </Button>
             </div>
 
