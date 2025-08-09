@@ -1,0 +1,32 @@
+📋 INSTRUÇÕES DE USO - DUAS VERSÕES NO MESMO REPO
+
+🎯 ESTRUTURA DO REPOSITÓRIO:
+
+📂 RAIZ (/) - VERSÃO GITHUB PAGES:
+├── index.html ← Use estes para GitHub Pages
+├── static/
+├── asset-manifest.json
+└── [outros arquivos...]
+
+📂 hostinger-version/ - VERSÃO HOSTINGER: 
+├── index.html ← Use estes para seu domínio
+├── static/
+├── asset-manifest.json  
+└── [outros arquivos...]
+
+🚀 COMO USAR:
+
+✅ PARA GITHUB PAGES:
+- Os arquivos da RAIZ já funcionam automaticamente
+- GitHub Pages usará: index.html, static/, etc da raiz
+
+✅ PARA HOSTINGER:
+1. No GitHub, ENTRE na pasta "hostinger-version"
+2. Baixe APENAS os arquivos desta pasta
+3. Faça upload no Hostinger (pasta public_html)
+
+🎯 DIFERENÇAS:
+- RAIZ: Caminhos /Roleta-mistica/static/... (GitHub Pages)
+- HOSTINGER: Caminhos ./static/... (seu domínio)
+
+💡 AMBAS VERSÕES ESTÃO PRONTAS E FUNCIONAIS!
